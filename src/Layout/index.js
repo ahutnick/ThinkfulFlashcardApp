@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "./home/Home";
+import NewDeck from "./decks/NewDeck";
+import ViewDeck from "./decks/ViewDeck";
 
 function Layout() {
-  const [decks, setDecks] = useState([]);
-  const [cards, setCards] = useState([]);
-
-  const sampleDecks = [{id: 1, name: "Testing", description: "I really hope this works!"}, {id: 2, name: "1, 2, 3", description: "Anything but THAT"}];
-  const sampleCards = [{id: 1, front: "What's this say?", back: "Not like anyone's gonna see it", deckId: 1}];
+  
 
   return (
     <>
@@ -18,7 +16,13 @@ function Layout() {
         {/* TODO: Implement the screen starting here */}
         <Switch>
           <Route exact path="/">
-            <Home decks={sampleDecks} cards={sampleCards}/>
+            <Home />
+          </Route>
+          <Route path="/decks/new">
+            <NewDeck />
+          </Route>
+          <Route path="/decks/:deckId">
+            <ViewDeck />
           </Route>
           <Route>
             <NotFound />

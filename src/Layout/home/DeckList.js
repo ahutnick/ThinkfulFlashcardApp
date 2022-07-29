@@ -1,10 +1,10 @@
 import React from "react";
 import DeckCard from "./DeckCard";
 
-function DeckList({ decks, cards }) {
+function DeckList({ decks }) {
     const entries = decks.map((deck) => { 
         return ( 
-            <DeckCard deck={ deck } cards={cards} /> 
+            <DeckCard key={`Deck-${deck.id}`} deck={ deck } /> 
         );
     });
     
