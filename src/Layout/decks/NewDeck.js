@@ -8,7 +8,7 @@ function NewDeck() {
         <>
             {breadcrumb("Create Deck")}
             <h3>Create Deck</h3>
-            <DeckForm />
+            <DeckForm initialState={{}} />
         </>
     );
 }

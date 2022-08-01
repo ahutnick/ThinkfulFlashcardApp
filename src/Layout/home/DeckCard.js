@@ -9,7 +9,7 @@ function DeckCard({ deck }) {
         return (
             <div key={deck.id} className="card">
                 <div className="card-body">
-                    <div class="row">
+                    <div className="row">
                         <div className="col-6">
                         <h5 className="card-title">{deck.name}</h5>
                         </div>
@@ -17,7 +17,7 @@ function DeckCard({ deck }) {
                         <h6 className="card-subtitle text-right">{cardsForDeck} cards</h6>
                         </div>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <div className="col-8">
                             <p className="card-text">{deck.description}</p>
                         </div>
