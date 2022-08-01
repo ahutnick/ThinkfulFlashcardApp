@@ -13,7 +13,7 @@ function Card({card}) {
                     {card.back}
                 </div>
                 <div className="row mt-2">
-                    <button className="btn btn-secondary mr-2" onClick={() => siteHistory.push(`${url}/edit`)}>Edit</button>
+                    <button className="btn btn-secondary mr-2" onClick={() => siteHistory.push(`${url}/cards/${card.id}/edit`)}>Edit</button>
                     <button className="btn btn-danger" onClick={() => DeleteBtn(card, siteHistory)}>Delete</button>
                 </div>
             </td>

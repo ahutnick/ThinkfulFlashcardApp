@@ -10,11 +10,11 @@ function CardForm({cardInfo}) {
 
     useEffect(() => {
         cardInfo.front ? setFormData(cardInfo) : setFormData({...initialState, ...cardInfo});
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cardInfo]);
 
 
-    const handleChange = (target) => {
+    const handleChange = ({ target }) => {
         setFormData({...formData, [target.name]: target.value})
     }
 
@@ -27,7 +27,7 @@ function CardForm({cardInfo}) {
             siteHistory.go(0);
         } else {
             await createCard(formData.deckId, formData, abortController.signal);
-            setFormData({...initialState, deckId: formData.deckId});
+            siteHistory.go(0);
         }
     } 
 
@@ -39,7 +39,7 @@ function CardForm({cardInfo}) {
                     name="front"
                     id="front"
                     className="form-control"
-                    value={formData.front}
+                    value={formData.front || ""}
                     onChange={handleChange}
                     required={true}
                     rows="4"
@@ -52,7 +52,7 @@ function CardForm({cardInfo}) {
                     name="back"
                     id="back"
                     className="form-control"
-                    value={formData.back}
+                    value={formData.back || ""}
                     onChange={handleChange}
                     required={true}
                     rows="4"

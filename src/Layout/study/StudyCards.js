@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 
 function StudyCards({cards}) {
@@ -10,18 +10,16 @@ function StudyCards({cards}) {
     }
 
     const Next = () => {
-        setCard({index: card.index + 1, front: true, content: cards[card.index + 1]});
-    }
-
-    useEffect(() => {
         if (card.index === (cards.length - 1) && !card.front) {
             if (window.confirm("Restart cards? \n Click 'cancel' to return to the home page.")) {
                 siteHistory.go(0);
             } else {
                 siteHistory.push("/");
             }
+        } else {
+            setCard({index: card.index + 1, front: true, content: cards[card.index + 1]});
         }
-    }, [card])
+    }
 
 
     return (

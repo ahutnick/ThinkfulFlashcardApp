@@ -16,6 +16,8 @@ function DeckForm({initialState}) {
         setFormData({...formData, [target.name]: target.value});
     }
 
+    
+
     async function processDeck() {
         const abortController = new AbortController();
         if (formData.id) {
@@ -27,9 +29,9 @@ function DeckForm({initialState}) {
         }
     }
 
-    const HandleSubmit = (event) => {
+    const HandleSubmit = async (event) => {
         event.preventDefault();
-        const deck = processDeck();
+        const deck = await processDeck();
         siteHistory.push(`/decks/${deck.id}`);
         siteHistory.go(0);
     }

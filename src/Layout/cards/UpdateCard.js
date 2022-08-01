@@ -7,24 +7,26 @@ function UpdateCard({deck}) {
     const [card, setCard] = useState({});
     const {cardId} = useParams();
     
-    async function loadCard() {
-        const abortController = new AbortController();
-        const loaded = await readCard(cardId, abortController.signal);
-        setCard(loaded);
-    }
 
-    const onLoad = () => {
-        try {
-            loadCard();
-        } catch (error) {
-            if (error.name !== "AbortError") {
-                throw error
-            } 
+    
+
+
+    useEffect(() => {
+        async function onLoad() {
+            try {
+                const abortController = new AbortController();
+                const loaded = await readCard(cardId, abortController.signal);
+                setCard(loaded);
+            } catch (error) {
+                if (error.name !== "AbortError") {
+                    throw error
+                } 
+            }
         }
-    }
+        onLoad()
 
-
-    useEffect(onLoad, [cardId]);
+    }, [cardId]
+        );
 
     return (
         <>
